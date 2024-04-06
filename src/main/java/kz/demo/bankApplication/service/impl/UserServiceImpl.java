@@ -2,6 +2,7 @@ package kz.demo.bankApplication.service.impl;
 
 import kz.demo.bankApplication.dto.AccountInfoDto;
 import kz.demo.bankApplication.dto.BankResponseDto;
+import kz.demo.bankApplication.dto.EmailDetailsDto;
 import kz.demo.bankApplication.dto.UserDto;
 import kz.demo.bankApplication.entity.User;
 import kz.demo.bankApplication.repository.UserRepository;
@@ -16,6 +17,9 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    EmailService emailService;
     @Override
     public BankResponseDto createAccount(UserDto userDto) {
     /**
@@ -44,6 +48,17 @@ public class UserServiceImpl implements UserService{
                 .build();
 
         User savedUser = userRepository.save(newUser);
+
+        EmailDetailsDto emailDetailsDto = EmailDetailsDto.builder()
+                .recipient(savedUser.getEmail())
+                .subject("Account creation")
+                .messageBody("Congratulations! Your Account has been succesfully created. \n" +
+                        "Your Account Details:\n" +
+                        "Account Name: "+ savedUser.getFirstName() + " " + savedUser.getLastName() + " " + savedUser.getOtherName() + "\n" +
+                        "Account  Number: "+ savedUser.getAccountNumber())
+
+                .build();
+        emailService.sendEmailAlert(emailDetailsDto);
         return BankResponseDto.builder()
                 .responseCode(AccountUtils.ACCOUNT_CREATION_SUCCESS_CODE)
                 .responseMessage(AccountUtils.ACCOUNT_CREATION_SUCCESS_MESSAGE)
