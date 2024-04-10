@@ -1,9 +1,6 @@
 package kz.demo.bankApplication.service.impl;
 
-import kz.demo.bankApplication.dto.BankResponseDto;
-import kz.demo.bankApplication.dto.CreditDebitRequestDto;
-import kz.demo.bankApplication.dto.EnquiryRequestDto;
-import kz.demo.bankApplication.dto.UserRequestDto;
+import kz.demo.bankApplication.dto.*;
 
 public interface UserService {
     BankResponseDto createAccount(UserRequestDto userRequestDto);
@@ -12,4 +9,5 @@ public interface UserService {
     String nameEnquiry(EnquiryRequestDto request);
     BankResponseDto creditAccount(CreditDebitRequestDto request);
     BankResponseDto debitAccount(CreditDebitRequestDto request);
+    BankResponseDto transferAccount(TransferRequestDto request);
 }

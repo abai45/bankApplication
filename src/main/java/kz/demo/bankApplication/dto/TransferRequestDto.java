@@ -11,7 +11,8 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreditDebitRequestDto {
-    private String accountNumber;
+public class TransferRequestDto {
+    private String sourceAccountNumber;
+    private String destinationAccountNumber;
     private BigDecimal amount;
 }

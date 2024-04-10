@@ -22,6 +22,14 @@ public class AccountUtils {
     public static final String INSUFFICIENT_BALANCE_MESSAGE = "Insufficient balance";
     public static final String ACCOUNT_DEBITED_SUCCESS_CODE = "007";
     public static final String ACCOUNT_DEBITED_SUCCESS_MESSAGE = "Account has been debited succesfully";
+
+    public static final String DESTINATION_ACCOUNT_NOT_EXIST_CODE = "008";
+    public static final String DESTINATION_ACCOUNT_NOT_EXIST_MESSAGE = "Destination account is not exist";
+
+    public static final String TRANSFER_SUCCESS_CODE = "009";
+    public static final String TRANSFER_SUCCESS_MESSAGE = "Transfer successfully ended";
+
+
     public static String generateIban() {
         final String KZ_IBAN_PREFIX = "KZ";
         final int KZ_IBAN_LENGTH = 20;

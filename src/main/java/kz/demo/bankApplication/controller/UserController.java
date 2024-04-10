@@ -1,9 +1,6 @@
 package kz.demo.bankApplication.controller;
 
-import kz.demo.bankApplication.dto.BankResponseDto;
-import kz.demo.bankApplication.dto.CreditDebitRequestDto;
-import kz.demo.bankApplication.dto.EnquiryRequestDto;
-import kz.demo.bankApplication.dto.UserRequestDto;
+import kz.demo.bankApplication.dto.*;
 import kz.demo.bankApplication.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -34,5 +31,9 @@ public class UserController {
     @PostMapping("debit")
     public BankResponseDto debitAccount(@RequestBody CreditDebitRequestDto request) {
         return userService.debitAccount(request);
+    }
+    @PostMapping("transfer")
+    public BankResponseDto transferAccount(@RequestBody TransferRequestDto request) {
+        return userService.transferAccount(request);
     }
 }
