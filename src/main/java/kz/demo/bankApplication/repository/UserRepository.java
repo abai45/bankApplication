@@ -1,11 +1,15 @@
 package kz.demo.bankApplication.repository;
 
-import kz.demo.bankApplication.entity.User;
+import kz.demo.bankApplication.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
     Boolean existsByEmail(String email);
 
     Boolean existsByAccountNumber(String accountNumber);
-    User findByAccountNumber(String accountNumber);
+    UserEntity findByAccountNumber(String accountNumber);
+    Optional<UserEntity> findByEmail(String email);
+
 }

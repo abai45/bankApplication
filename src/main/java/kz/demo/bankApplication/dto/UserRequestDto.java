@@ -20,6 +20,7 @@ public class UserRequestDto {
     private String otherName;
     private String gender;
     private String email;
+    private String password;
     private String phoneNumber;
     private  String alternativePhoneNumber;
     @CreationTimestamp
