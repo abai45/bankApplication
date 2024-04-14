@@ -49,12 +49,10 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(
-                                HttpMethod.POST, "/api/user"
-                        ).permitAll()
-                        .requestMatchers(
-                                HttpMethod.POST, "/api/user/login"
-                        ).permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/user").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/user").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/user/login").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/user/login").permitAll()
                         .anyRequest().authenticated());
 
         httpSecurity.sessionManagement(session -> session
